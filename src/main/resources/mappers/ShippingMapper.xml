@@ -38,7 +38,7 @@
     values (#{id,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{receiverName,jdbcType=VARCHAR}, 
       #{receiverPhone,jdbcType=VARCHAR}, #{receiverProvince,jdbcType=VARCHAR}, #{receiverCity,jdbcType=VARCHAR}, 
       #{receiverDistrict,jdbcType=VARCHAR}, #{receiverAddress,jdbcType=VARCHAR}, #{receiverZip,jdbcType=VARCHAR}, 
-      now(), now()})
+      now(), now())
   </insert>
   <insert id="insertSelective" parameterType="com.shop.pojo.Shipping" >
     insert into shop_shipping
@@ -163,4 +163,12 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+ <select id="getShippingList" resultMap="BaseResultMap" parameterType="int">
+   SELECT
+   <include refid="Base_Column_List" />
+   from shop_shipping
+   where user_id = #{userId}
+ </select>
+
 </mapper>

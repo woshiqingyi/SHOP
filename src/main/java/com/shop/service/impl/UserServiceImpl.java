@@ -15,8 +15,6 @@ public class UserServiceImpl implements IUserService {
       @Resource
       private UserMapper userMapper;
 
-
-
       @Override
       public ServerResponse<User> login(String username,String password){
             int Count = userMapper.checkUsername(username);
