@@ -15,16 +15,16 @@ public class User {
 
     private Date createTime;
 
-    private Date updataTime;
+    private Date updateTime;
 
-    public User(Integer id, String username, String password, String email, Integer role, Date createTime, Date updataTime) {
+    public User(Integer id, String username, String password, String email, Integer role, Date createTime, Date updateTime) {
         this.id = id;
         this.username = username;
         this.password = password;
         this.email = email;
         this.role = role;
         this.createTime = createTime;
-        this.updataTime = updataTime;
+        this.updateTime = updateTime;
     }
 
     public User() {
@@ -79,11 +79,11 @@ public class User {
         this.createTime = createTime;
     }
 
-    public Date getUpdataTime() {
-        return updataTime;
+    public Date getupdateTime() {
+        return updateTime;
     }
 
-    public void setUpdataTime(Date updataTime) {
-        this.updataTime = updataTime;
+    public void setupdateTime(Date updateTime) {
+        this.updateTime = updateTime;
     }
 }
