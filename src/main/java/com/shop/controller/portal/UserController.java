@@ -36,4 +36,15 @@ public class UserController {
     public ServerResponse<String> register(User user) {
        return iUserService.register(user);
     }
+
+    @RequestMapping(value = "get_user", method = RequestMethod.POST)
+    @ResponseBody
+
+    public ServerResponse<User> getUser(Integer userId, HttpSession session) {
+        User user = (User) session.getAttribute(Const.CURRENT_USER);
+        if (user == null) {
+            return ServerResponse.createByErrorMessage("用户未登录");
+        }
+        return iUserService.getUser(user.getId());
+    }
 }

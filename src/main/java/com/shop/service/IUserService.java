@@ -10,4 +10,6 @@ public interface IUserService {
 
     ServerResponse checkIsAdmin(User user);
 
+    ServerResponse getUser(Integer userId);
+
 }

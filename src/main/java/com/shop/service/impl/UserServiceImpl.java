@@ -43,6 +43,12 @@ public class UserServiceImpl implements IUserService {
     }
 
     @Override
+    public ServerResponse getUser(Integer userId) {
+        User response = userMapper.selectByPrimaryKey(userId);
+        return ServerResponse.createBySuccess(response);
+    }
+
+    @Override
     public ServerResponse checkIsAdmin(User user) {
         if (user.getRole().intValue() == Const.Role.ROLE_ADMIN) {
              return ServerResponse.createBySuccess();

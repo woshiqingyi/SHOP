@@ -4,7 +4,6 @@ import com.shop.common.Const;
 import com.shop.common.ServerResponse;
 import com.shop.dao.ShippingMapper;
 import com.shop.pojo.Shipping;
-import com.shop.pojo.User;
 import com.shop.service.IShippingService;
 import org.springframework.stereotype.Service;
 

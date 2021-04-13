@@ -14,11 +14,8 @@ public class CategoryServiceImpl implements ICategoryService {
     @Resource
     private CategoryMapper categoryMapper;
 
-    public ServerResponse addCategory(String categoryName, Integer parentId) {
-        Category category = new Category();
-        category.setName(categoryName);
-        category.setParentId(parentId);
-        category.setStatus(true);
+    @Override
+    public ServerResponse addCategory(Category category) {
         int Count = categoryMapper.insert(category);
         if (Count > 0) {
             return ServerResponse.createBySuccessMessage("新增类目成功");
@@ -26,11 +23,8 @@ public class CategoryServiceImpl implements ICategoryService {
         return ServerResponse.createByErrorMessage("新增类目失败");
     }
 
-    public ServerResponse updateCategory(String categoryName, Integer categoryId) {
-        Category category = new Category();
-        category.setName(categoryName);
-        category.setId(categoryId);
-
+    @Override
+    public ServerResponse updateCategory(Category category) {
         int Count = categoryMapper.updateByPrimaryKeySelective(category);
         if (Count > 0) {
             return ServerResponse.createBySuccessMessage("更新类目成功");
@@ -38,6 +32,7 @@ public class CategoryServiceImpl implements ICategoryService {
         return ServerResponse.createByErrorMessage("更新类目失败");
     }
 
+    @Override
     public ServerResponse<List<Category>> getChildCategoryList(Integer categoryId) {
         List<Category> CategoryList = categoryMapper.getCategoryList(categoryId);
         if(CategoryList == null){
@@ -46,6 +41,7 @@ public class CategoryServiceImpl implements ICategoryService {
         return ServerResponse.createBySuccess(CategoryList);
     }
 
+    @Override
     public ServerResponse<String> deleteCategory(Integer id) {
         int Count = categoryMapper.deleteByPrimaryKey(id);
         if(Count == 0){
